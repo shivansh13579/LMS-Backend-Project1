@@ -10,7 +10,7 @@ router.post('/register', upload.single("avatar") , register);
 router.post('/login', login);
 router.get('/logout',logout);
 router.get('/me', isLoggedIn ,getProfile);
-router.post('/forgot-password',upload.single("avatar"), forgot);
-router.post('/reset-password',upload.single("avatar"), reset);
+router.post('/forgot-password',upload.single("avatar"), forgotPassword);
+router.post('/reset-password',upload.single("avatar"), resetPassword);
 
 export default router;
