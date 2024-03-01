@@ -21,3 +21,5 @@ const sendEmail = async function (email,subject, message) {
     html: message, // html body
       });
 };
+
+export default sendEmail;
