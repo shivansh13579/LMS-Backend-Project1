@@ -1,5 +1,5 @@
 import { Schema,model } from "mongoose";
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs'; 
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 
@@ -52,6 +52,7 @@ userSchema.pre('save', async function(next){
     return next();
   }
   this.password =await bcrypt.hash(this.password,10);
+  
 });
 
 userSchema.methods = {
@@ -69,9 +70,11 @@ userSchema.methods = {
       }
     )
   },
+
   comparePassword: async function(plainTextPassword) {
     return await bcrypt.compare(plainTextPassword,this.password);
   },
+
   generatePasswordResetToken: async function () {
     const resetToken = crypto.randomBytes(20).toString('hex');
 
@@ -84,6 +87,7 @@ userSchema.methods = {
 
     return resetToken;
   }
+  
 }
 const User = model('User',userSchema);
 

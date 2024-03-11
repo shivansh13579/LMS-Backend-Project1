@@ -59,7 +59,7 @@ const register = async (req,res,next) => {
             }
         } catch (e) {
             return next(
-                new AppError(error || 'File not uploaded, please try again', 500)
+                new AppError(e || 'File not uploaded, please try again', 500)
             )
         }
     }
@@ -210,12 +210,9 @@ const resetPassword = async (req,res) => {
         success: true,
         message: "Password changed successfully"
       })
+}
 
-
- }
-
- 
- const changePassword = async (req,res,next) => {
+const changePassword = async (req,res,next) => {
     const { oldPassword, newPassword } = req.body;
     const { id } = req.user;
 
@@ -250,6 +247,7 @@ const resetPassword = async (req,res) => {
        message: "Password changed successfully!"
     })
 }
+
 
 const updateUser = async (req,res) => {
          const {fullName} = req.body;
@@ -296,7 +294,7 @@ const updateUser = async (req,res) => {
 
          res.status(200).json({
             success: true,
-            message: 'User details update successfully'
+            message: 'User details updated successfully'
          })
 }
 
